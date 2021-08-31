@@ -117,36 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/preset-react/index.js":[function(require,module,exports) {
-const {
-  resolve
-} = require;
-const ENV = undefined || "development";
-const isProd = ENV === 'production';
-const isTest = ENV === 'test'; // default supported browser.
-
-const defaultBrowserList = ['> 0.25%', 'IE >= 9'];
-
-module.exports = function () {
-  return {
-    presets: [[resolve('@babel/preset-typescript'), resolve('@babel/preset-env'), {
-      loose: true,
-      modules: isTest ? 'commonjs' : false,
-      targets: {
-        browsers: defaultBrowserList
-      },
-      exclude: ['transform-regenerator', 'transform-async-to-generator']
-    }]],
-    plugins: [resolve('@babel/plugin-syntax-dynamic-import'), resolve('@babel/plugin-transform-object-assign'), [resolve('@babel/plugin-proposal-decorators'), {
-      legacy: true
-    }], [resolve('@babel/plugin-proposal-class-properties'), {
-      loose: true
-    }], resolve('@babel/plugin-proposal-object-rest-spread'), isProd && resolve('babel-plugin-transform-react-remove-prop-types'), resolve('@babel/plugin-transform-react-jsx'), [resolve('fast-async'), {
-      spec: true
-    }], resolve('babel-plugin-macros'), resolve('react-hot-loader/babel')].filter(Boolean)
-  };
-};
-},{}],"../node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -29598,14 +29569,18 @@ if ("development" === 'production') {
 },{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../src/index.js":[function(require,module,exports) {
 "use strict";
 
-var _presetReact = _interopRequireDefault(require("preset-react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var content = /*#__PURE__*/_presetReact.default.createElement("div", null, "hello !");
-},{"preset-react":"../node_modules/preset-react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var content = /*#__PURE__*/_react.default.createElement("div", null, "hello !");
+
+var div = document.getElementById('app');
+
+_reactDom.default.render(content, div);
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29633,7 +29608,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38221" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43009" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
